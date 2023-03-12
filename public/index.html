@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <script type="text/javascript"
+    src="https://cdnapisec.kaltura.com/p/$partnerId/embedPlaykitJs/uiconf_id/$cncUiconf"></script>
+  <style>
+    .kep-linkify-message {
+      font-family: cursive;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script defer>
+    function loadCnc(options) {
+      const floaterConfig = {
+        "consent": {
+          "legalTextUrls": [],
+          "defaultSettings": {
+            "receiveNotifications": true,
+            "showFullName": true,
+            "allowChatAndCollaboration": true
+          },
+          "cookieConsent": true
+        },
+        "server": {
+          "jwtToken": "$jwt",
+          "serviceUrl": "https:\/\/chat.nvp1.ovp.kaltura.com\/api_v3"
+        },
+        "theme": {
+          "Common": {
+            "FontFamily": "cursive"
+          }
+        },
+        "ui": {
+          "toastTimeout": "5000",
+          "toastPlayerUiconf": $cncUiconf,
+          "zIndex": 999,
+          "position": {
+            "right": "24px"
+          },
+          "locale": "en",
+          "groupChat": {
+            "enabled": true,
+            "mode": "groupChat",
+            "reactions": true,
+            "reply": true
+          },
+          "instanceOptions": {
+            "enableChat": true,
+            "enableSearch": true
+          }
+        },
+        "helpLink": "\/help",
+        "moderation": {
+          "moderatorUrl": "https://$partnerId.mediaspace.kaltura.com\/user\/authenticate\/ks\/$playerKS;",
+          "ui": {
+            "label": "",
+            "thumbnailUrl": "https://cfvod.kaltura.com/p/$partnerId/thumbnail/entry_id/1_5tl0qzl4/width/36/height/36/type/3",
+            "message": "Dreamforce 21 keynote",
+            "name": "Create better, faster",
+            "ctaButton": {
+              "type": "",
+              "label": ""
+            }
+          }
+        }, "reactions": {
+          "mode": "available",
+          "sourceUrl": "https:\/\/cdnapisec.kaltura.com\/p\/$partnerId\/embedPlaykitJs\/uiconf_id\/$cncReactionsUiConf",
+          "endpointUrl": "https:\/\/analytics.kaltura.com",
+          "ks": "$cncReactionsKS;"
+        }
+      };
+
+      function initiateFloater() {
+        floater = KalturaEventsPlatform.collaboration.widgets.floater.new(floaterConfig);
+        floater.render();
+      }
+      initiateFloater();
+    }
+    async function initData() {
+      // TODO .. get data from the server ( everything needed to run loadCnc() )
+      // GET http://localhost:9005/embed-cnc/init-data
+      // result ---> { "ks":"djJ8NDU3NDA3M3wtRN11r_Hq0TfhykuT-hbyzxw9FaHt4D9ljsDkAuRWR-_yZQksBuwBvNyl6yFOuiFrDoilqv8h_0k5AfkMSx3I7VJ2WItZWubDYCeMXmfKZ0DSRSDeq19peRWiXOqcBfqH8jAUQPQGl6J2N0ARJLBy","jwt":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjQ1NzQwNzMifQ.eyJwYXJ0bmVySWQiOiI0NTc0MDczIiwidWlkIjoiaGFubmFoLmtyYXVzQGthbHR1cmEuY29tIiwiZ3JvdXBzIjpbXSwiZXhwIjoxNjc4MTk0NzE1LCJpc0FkbWluIjpmYWxzZSwidmlydHVhbEV2ZW50SWQiOjEyNzc1NzEsImlzU2NvcGVkVXNlciI6dHJ1ZSwiaWF0IjoxNjc4MTA4MzE1fQ.J6f7YNADkL3A6jDKZeznaVeD-2nRAORpTl2N76hfWpg","success":true }
+      const options = // get the json from the server
+      loadCnc(options)
+    }
+    await initData()
+  </script>
+</body>
+
+</html>
